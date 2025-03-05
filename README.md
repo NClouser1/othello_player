@@ -1,6 +1,9 @@
 # Noah Clouser's othello_player implementation
 Technical coding challenge given by Atomic Object
 
+I implemented the Mini-Max Alpha-Beta pruning algorithm to determine the next best move the AI agent should take given the GameState. I used a simple static heuristic to evalulate 
+the score of the game board at either a terminal node or limit. This performs amazing against the random othello player, but could be improved with a dynamic heuristic.
+
 Below is Atomic Object's introduction to the challenge and description of key aspects:
 
 # AOthello
