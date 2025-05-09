@@ -1,20 +1,25 @@
 # Noah Clouser's othello_player implementation
 
-This repository showcases my implementation of creating an AI agent to play the game Othello, also known as Reversi. This was the technical coding challenge given by Atomic Object.
+This repository showcases my implementation of creating an AI agent to play the game Othello, also known as Reversi. This was the technical coding challenge given by Atomic Object. This project is split into two sections, the server and AI agent. othello.jar is the server and the AI folder contains the files for the AI agent. My task from Atomic Object was to implement the AI.java file such that intelligent moves would be calculated and sent to the server during an active game.
 
 To create this agent, I utilized the Mini-Max Alpha-Beta pruning algorithm to determine the next best move the AI agent should take given the GameState. I used a simple static heuristic to evalulate 
-the score of the game board at either a terminal node or limit. This performs amazing against the random othello player, but could be improved with a dynamic heuristic.
+the score of the game board at either a terminal node or limit. This agent performs amazing against the random othello player, but could be improved with a dynamic heuristic.
 
 # Getting Started
 
-1. To run the game, you'll need a recent Java VM (we recommend Java 17) The game will log moves to the console and run a webserver at localhost on port 8080 for a UI (http://localhost:8080). Use a terminal/command line tool to invoke the game:
+## Quick Demo
+1. Execute the run_server.sh file in the ```othello_player/``` directory: ```./run_server.sh```
+2. Navigate to ```localhost:8080``` in a browser
+3. In a separate terminal execute the run_agent.sh file in the ```othello_player/``` directory: ```./run_agent.sh``` 
+4. Optional: Refresh the browser tab if gameplay does not start up immediately
+## Shell files
+If you would want to customize the game (i.e. make 2 random players play against one another), edit the run_server.sh file with the different options listed below
+1. run_server.sh:
 
     Template: ```$ java -jar othello.jar [options]```<br>
     Usage: ```$ java -jar othello.jar --p1-type remote --p2-type random --wait-for-ui```
-2. To start the agent gameplay, either run Main.java through an IDE or use a terminal/command line tool to compile and execute the following files:<br>
-
-    Preconditions: Navigate to the ```othello_player/AI/src/com/atomicobject/othello``` directory<br>
-    Usage: <br>```$ javac *.java```<br>```$ java Main```
+2. run_agent.sh:<br>
+    Usage: <br>```javac -cp AI/lib/gson-2.8.5.jar -d AI/bin "AI/src/com/atomicobject/othello/*.java"```<br>```java -cp "AI\bin;AI\lib\gson-2.8.5.jar" com.atomicobject.othello.Main```
    
 ## Options
 
@@ -58,12 +63,6 @@ Options:
   -h, --help
 ```
 
-## Starter Kits
-
-Look under the `/sdks` directory to find starter kits for C#, Java, Javascript, and Python. If you'd rather use a different language - feel free to do so and you can use the starter kits as a reference.
-
-The starter kit implementations will connect to the game server, read a board state, and then send a response. You'll need to modify them to analyze the game state and return an optimal move.
-
 ## Moves
 
 When the game server starts, it will wait for players to connect, then begin executing moves until it determines a winner.
@@ -81,8 +80,6 @@ When you've computed a move, return it as a JSON array, followed by a newline, f
 `"[1,2]\n"`
 
 The coordinate system begins at the top left of the board. The coordinates are in [row, column] format. So [7,0] would indicate the lower left corner of the board. [0,0] indicates the top left corner and [7,7] indicates the bottom right corner.
-
-Be sure to terminate your response with the newline, otherwise your move will timeout.
 
 Returning an invalid move will forfeit the game. Timing out (the default timeout is 15 seconds) will also forfeit the game.
 
