@@ -1,23 +1,21 @@
 # Noah Clouser's othello_player implementation
-Technical coding challenge given by Atomic Object
 
-I implemented the Mini-Max Alpha-Beta pruning algorithm to determine the next best move the AI agent should take given the GameState. I used a simple static heuristic to evalulate 
+This repository showcases my implementation of creating an AI agent to play the game Othello, also known as Reversi. This was the technical coding challenge given by Atomic Object.
+
+To create this agent, I utilized the Mini-Max Alpha-Beta pruning algorithm to determine the next best move the AI agent should take given the GameState. I used a simple static heuristic to evalulate 
 the score of the game board at either a terminal node or limit. This performs amazing against the random othello player, but could be improved with a dynamic heuristic.
 
-Below is Atomic Object's introduction to the challenge and description of key aspects:
+# Getting Started
 
-# AOthello
+1. To run the game, you'll need a recent Java VM (we recommend Java 17) The game will log moves to the console and run a webserver at localhost on port 8080 for a UI (http://localhost:8080). Use a terminal/command line tool to invoke the game:
 
-Welcome to this year's Atomic Accelerator challenge. You'll be creating a bot to play the game of Othello!
+    Template: ```$ java -jar othello.jar [options]```<br>
+    Usage: ```$ java -jar othello.jar --p1-type remote --p2-type random --wait-for-ui```
+2. To start the agent gameplay, either run Main.java through an IDE or use a terminal/command line tool to compile and execute the following files:<br>
 
-To begin, clone this repository.
-
-## Usage
-
-To run the game, you'll need a recent Java VM (we recommend Java 17). Use a terminal/command line tool to invoke the game:
-
-    $ java -jar othello.jar [options]
-
+    Preconditions: Navigate to the ```othello_player/AI/src/com/atomicobject/othello``` directory<br>
+    Usage: <br>```$ javac *.java```<br>```$ java Main```
+   
 ## Options
 
 You can specify that the server should invoke your player, use a "robot" player with a predetermined set of moves, or use a random player for one or both players.
@@ -29,7 +27,7 @@ The player can be one of three types:
 
 You'll most likely want to run with your client as a remote player, and a random player for the opponent.
 
-The game will log moves to the console and run a webserver at localhost on port 8080 for a UI (http://localhost:8080).
+
 
 Use the `--ui-port` to specify a different UI port.
 Pass the `--wait-for-ui` option in order to have the server wait for a UI connection before starting the game.
